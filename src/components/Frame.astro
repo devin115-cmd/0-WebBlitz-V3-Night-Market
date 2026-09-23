@@ -1,0 +1,32 @@
+---
+import { previewSrc, previewSrcset, unusablePreviews, type Demo } from '../data/demos';
+import { t, type Locale } from '../i18n';
+
+interface Props { demo: Demo; locale: Locale; sizes: string; eager?: boolean; class?: string; }
+const { demo, locale, sizes, eager = false, class: className } = Astro.props;
+const host = new URL(demo.url).host;
+const usable = !unusablePreviews.has(demo.slug);
+const hue = [...demo.slug].reduce((sum, char) => sum + char.charCodeAt(0), 0) % 360;
+---
+<figure class:list={['frame', className]} data-frame>
+  <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i><span class="frame__url">{host}/{demo.slug}</span></div>
+  {usable ? (
+    <img
+      src={previewSrc(demo.slug, 640)}
+      srcset={previewSrcset(demo.slug)}
+      sizes={sizes}
+      width="1280"
+      height="800"
+      alt={t(locale, 'catalogue.card.previewAlt', { demoName: demo.name })}
+      loading={eager ? 'eager' : 'lazy'}
+      fetchpriority={eager ? 'high' : 'auto'}
+      decoding="async"
+    />
+  ) : (
+    <div class="frame__cover" style={`--h:${hue}`}>
+      <span class="frame__cover-name" aria-hidden="true">{demo.name}</span>
+      <p>{t(locale, 'detail.imageUnavailable')}</p>
+    </div>
+  )}
+  {usable && <p class="frame__fail" hidden>{t(locale, 'detail.imageUnavailable')}</p>}
+</figure>

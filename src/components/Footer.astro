@@ -1,0 +1,40 @@
+---
+import { contact, legalBaseUrl } from '../data/site';
+import { localePath, t, type Locale } from '../i18n';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const legal = (page: string) => `${legalBaseUrl}${localePath(locale, `/${page}/`)}`;
+const year = new Date().getFullYear();
+---
+<footer class="footer" data-footer>
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <p class="footer__name">WebBlitz</p>
+        <p>{t(locale, 'footer.description')}</p>
+      </div>
+      <div>
+        <h2>{t(locale, 'brand.name')}</h2>
+        <ul>
+          <li><a href={localePath(locale, '/designs/')}>{t(locale, 'footer.designs')}</a></li>
+          <li><a href={`${localePath(locale, '/')}#pricing`}>{t(locale, 'footer.scope')}</a></li>
+          <li><a href={legal('terms')}>{t(locale, 'footer.terms')}</a></li>
+          <li><a href={legal('privacy')}>{t(locale, 'footer.privacy')}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>{t(locale, 'footer.contact')}</h2>
+        <ul>
+          <li><a href={`mailto:${contact.email}`}>{t(locale, 'footer.email', { email: contact.email })}</a></li>
+          <li><a href={`tel:${contact.phoneE164}`}>{t(locale, 'footer.phone', { phone: contact.phoneDisplay })}</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer__word" aria-hidden="true" data-footer-word>WebBlitz</p>
+    <div class="footer__base">
+      <p>{t(locale, 'footer.enquiryNote')}</p>
+      <p>{t(locale, 'footer.copyright', { year })}</p>
+    </div>
+  </div>
+</footer>

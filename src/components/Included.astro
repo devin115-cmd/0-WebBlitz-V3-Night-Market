@@ -1,0 +1,47 @@
+---
+import Icon from './Icon.astro';
+import Split from './Split.astro';
+import { countable, factValues } from '../i18n/facts';
+import { t, type Locale, type MessageKey } from '../i18n';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const values = factValues(locale);
+type Tile = { key: MessageKey; icon: Parameters<typeof Icon>[0]['name']; count?: keyof typeof values; size?: 'hero' | 'wide' };
+const tiles: Tile[] = [
+  { key: 'offer.included.page', icon: 'page', size: 'hero' },
+  { key: 'offer.included.about', icon: 'text', count: 'aboutWords' },
+  { key: 'offer.included.services', icon: 'grid', count: 'serviceCount' },
+  { key: 'offer.included.images', icon: 'image', count: 'photoCount' },
+  { key: 'offer.included.testimonials', icon: 'quote', count: 'testimonialCount' },
+  { key: 'offer.included.design', icon: 'palette' },
+  { key: 'offer.included.language', icon: 'language' },
+  { key: 'offer.included.contact', icon: 'pin' },
+  { key: 'offer.included.metadata', icon: 'share' },
+  { key: 'offer.included.hosting', icon: 'cloud', count: 'hostingMonths', size: 'wide' },
+  { key: 'offer.included.corrections', icon: 'pen', count: 'correctionRounds', size: 'wide' },
+];
+const excluded: MessageKey[] = ['offer.excluded.domain', 'offer.excluded.assets', 'offer.excluded.copy', 'offer.excluded.systems', 'offer.excluded.redesign', 'offer.excluded.support'];
+---
+<section class="included section" data-theme="cream" id="included">
+  <div class="wrap">
+    <p class="eyebrow">{t(locale, 'offer.eyebrow')}</p>
+    <h2 class="section-title" data-split><Split text={t(locale, 'offer.included.title')} /></h2>
+    <ul class="bento" data-bento>
+      {tiles.map((tile) => (
+        <li class:list={['tile', { 'tile--hero': tile.size === 'hero', 'tile--wide': tile.size === 'wide' }]} data-tile>
+          <Icon name={tile.icon} />
+          <div>
+            {tile.count && <span class="count" aria-hidden="true" data-count={countable[tile.count]}>{values[tile.count]}</span>}
+            <p>{t(locale, tile.key, values)}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+    <div class="excluded" data-reveal>
+      <h3>{t(locale, 'offer.excluded.title')}</h3>
+      <p class="fine gap-top">{t(locale, 'offer.excluded.intro')}</p>
+      <ul>{excluded.map((key) => <li>{t(locale, key)}</li>)}</ul>
+    </div>
+  </div>
+</section>

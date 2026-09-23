@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+import DemoCard from './DemoCard.astro';
+import Icon from './Icon.astro';
+import Split from './Split.astro';
+import { categories, demos } from '../data/demos';
+import { whatsappHref } from '../data/site';
+import { factValues } from '../i18n/facts';
+import { plural, t, type Locale, type MessageKey } from '../i18n';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const values = factValues(locale);
+---
+<Base locale={locale} path="/designs/" title={t(locale, 'meta.catalogue.title', values)} description={t(locale, 'meta.catalogue.description')}>
+  <section class="cat-hero section" data-theme="night">
+    <div class="lanterns" aria-hidden="true">
+      <span class="lantern" style="--x:82%;--y:10%;--s:.8;--d:8;--delay:2;--dx:-10;--dy:-30;--o:.7;--b:1"><i></i></span>
+      <span class="lantern" style="--x:64%;--y:52%;--s:.4;--d:7;--delay:4;--dx:10;--dy:-24;--o:.55;--b:3"><i></i></span>
+      <span class="lantern" style="--x:92%;--y:66%;--s:.5;--d:9;--delay:1;--dx:-8;--dy:-34;--o:.6;--b:2"><i></i></span>
+    </div>
+    <div class="wrap">
+      <p class="eyebrow">{t(locale, 'catalogue.eyebrow', values)}</p>
+      <h1 data-split><Split text={t(locale, 'catalogue.title')} /></h1>
+      <p class="section-lede" data-reveal>{t(locale, 'catalogue.description')}</p>
+      <p class="notice" data-reveal><Icon name="info" /><span>{t(locale, 'catalogue.disclosure')}</span></p>
+    </div>
+  </section>
+  <section class="catalogue section" data-theme="night" data-catalogue>
+    <div class="wrap">
+      <form class="filters" role="search" data-filters hidden onsubmit="return false">
+        <label class="search">
+          <span class="sr-only">{t(locale, 'catalogue.search.label')}</span>
+          <Icon name="search" />
+          <input type="search" name="q" autocomplete="off" placeholder={t(locale, 'catalogue.search.placeholder')} data-search />
+        </label>
+        <div class="chips" role="group" aria-label={t(locale, 'catalogue.filter.label')}>
+          <button type="button" data-filter="" aria-pressed="true">{t(locale, 'catalogue.filter.all')}</button>
+          {categories.map((category) => <button type="button" data-filter={category} aria-pressed="false">{t(locale, `category.${category}` as MessageKey)}</button>)}
+        </div>
+        <div class="filters__status">
+          <p aria-live="polite" data-results>{plural(locale, 'catalogue.results', demos.length)}</p>
+          <button type="button" data-clear hidden>{t(locale, 'catalogue.filter.clear')}</button>
+        </div>
+      </form>
+      <ul class="grid" data-grid>
+        {demos.map((demo) => <DemoCard demo={demo} locale={locale} sizes="(min-width: 1100px) 400px, (min-width: 720px) 45vw, 92vw" />)}
+      </ul>
+      <div class="empty" data-empty hidden>
+        <h2>{t(locale, 'catalogue.empty.title')}</h2>
+        <p class="fine">{t(locale, 'catalogue.empty.body')}</p>
+        <button class="btn btn--ghost" type="button" data-clear>{t(locale, 'catalogue.filter.clear')}</button>
+      </div>
+      <div class="cta-band" data-reveal>
+        <h2>{t(locale, 'catalogue.cta.title')}</h2>
+        <p>{t(locale, 'catalogue.cta.body')}</p>
+        <a class="btn btn--ink" href={whatsappHref(t(locale, 'enquiry.message.general'))} target="_blank" rel="noopener" data-magnetic><Icon name="whatsapp" />{t(locale, 'catalogue.cta.action')}</a>
+      </div>
+    </div>
+  </section>
+</Base>

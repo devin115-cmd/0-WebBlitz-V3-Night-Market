@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from './Hero.astro';
+import Marquee from './Marquee.astro';
+import Promises from './Promises.astro';
+import Gallery from './Gallery.astro';
+import Process from './Process.astro';
+import Included from './Included.astro';
+import Pricing from './Pricing.astro';
+import Faq from './Faq.astro';
+import Finale from './Finale.astro';
+import { t, type Locale } from '../i18n';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+---
+<Base locale={locale} path="/" home title={t(locale, 'meta.home.title')} description={t(locale, 'meta.home.description')}>
+  <Hero locale={locale} />
+  <Marquee locale={locale} />
+  <Promises locale={locale} />
+  <Gallery locale={locale} />
+  <Process locale={locale} />
+  <Included locale={locale} />
+  <Pricing locale={locale} />
+  <Faq locale={locale} />
+  <Finale locale={locale} />
+</Base>

@@ -1,0 +1,55 @@
+---
+import Frame from './Frame.astro';
+import Icon from './Icon.astro';
+import Split from './Split.astro';
+import { demoBySlug, heroSlugs } from '../data/demos';
+import { whatsappHref } from '../data/site';
+import { factValues } from '../i18n/facts';
+import { t, type Locale } from '../i18n';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const values = factValues(locale);
+const sentences = t(locale, 'home.hero.title').split(/(?<=[.!?])\s+/).filter(Boolean);
+const lanterns = [
+  { x: 6, y: 18, s: .7, d: 7, delay: 1, dx: 14, dy: -36, o: .75, b: 1 },
+  { x: 18, y: 72, s: .45, d: 9, delay: 3, dx: -10, dy: -30, o: .6, b: 2 },
+  { x: 44, y: 10, s: .38, d: 8, delay: 2, dx: 12, dy: -24, o: .55, b: 3 },
+  { x: 58, y: 80, s: .9, d: 10, delay: 5, dx: -18, dy: -46, o: .5, b: 6 },
+  { x: 74, y: 6, s: .6, d: 6.5, delay: 4, dx: 10, dy: -30, o: .8, b: 0 },
+  { x: 90, y: 42, s: .5, d: 8.5, delay: 6, dx: -12, dy: -40, o: .7, b: 1 },
+  { x: 32, y: 44, s: .28, d: 7.5, delay: 2.5, dx: 8, dy: -20, o: .5, b: 4 },
+  { x: 84, y: 88, s: .34, d: 9.5, delay: 1.5, dx: -6, dy: -28, o: .55, b: 2 },
+];
+---
+<section class="hero section" data-theme="night" id="top" data-hero>
+  <canvas class="hero__aurora" data-aurora aria-hidden="true"></canvas>
+  <div class="lanterns" aria-hidden="true" data-lanterns>
+    {lanterns.map((l) => <span class="lantern" data-depth={l.s} style={`--x:${l.x}%;--y:${l.y}%;--s:${l.s};--d:${l.d};--delay:${l.delay};--dx:${l.dx};--dy:${l.dy};--o:${l.o};--b:${l.b}`}><i></i></span>)}
+  </div>
+  <div class="wrap hero__grid">
+    <div class="hero__copy" data-hero-copy>
+      <p class="chip" data-intro><span class="chip__dot"><Icon name="spark" /></span>{t(locale, 'home.hero.eyebrow')}</p>
+      <h1 class="hero__title" data-split>
+        {sentences.map((sentence, index) => <span class:list={['line', { 'line--glow': sentences.length > 1 && index === sentences.length - 1 }]}><Split text={sentence} /></span>)}
+      </h1>
+      <p class="hero__lede" data-intro>{t(locale, 'home.hero.description')}</p>
+      <div class="hero__actions" data-intro>
+        <a class="btn btn--glow" href={whatsappHref(t(locale, 'enquiry.message.general'))} target="_blank" rel="noopener" data-magnetic><Icon name="whatsapp" />{t(locale, 'home.hero.whatsapp')}</a>
+        <a class="btn btn--ghost" href="#designs">{t(locale, 'home.hero.designs')}<Icon name="right" /></a>
+      </div>
+      <div class="hero__facts" data-intro>
+        <p class="hero__price"><strong>{t(locale, 'home.hero.price', values)}</strong></p>
+        <p class="fine">{t(locale, 'home.hero.languageNote')}</p>
+        <p class="fine">{t(locale, 'home.hero.confirmation')}</p>
+      </div>
+    </div>
+    <div class="hero__stage" data-hero-stage>
+      <div class="hero__fan" data-fan>
+        {heroSlugs.map((slug, index) => <Frame demo={demoBySlug(slug)} locale={locale} sizes="(min-width: 960px) 560px, 78vw" eager={index === heroSlugs.length - 1} />)}
+      </div>
+      <p class="hero__badge" data-intro><b>{values.demoCount}</b><span>{t(locale, 'home.hero.demoCount', values)}</span></p>
+    </div>
+  </div>
+  <span class="scroll-cue" aria-hidden="true"></span>
+</section>

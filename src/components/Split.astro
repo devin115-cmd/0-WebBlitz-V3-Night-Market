@@ -1,0 +1,6 @@
+---
+/** Wraps whole words so they can rise into view; letters are never separated, which keeps Sinhala and Tamil shaping intact. */
+interface Props { text: string; }
+const words = Astro.props.text.split(/\s+/).filter(Boolean);
+---
+{words.map((word, index) => <Fragment><span class="w"><span>{word}</span></span>{index < words.length - 1 ? ' ' : ''}</Fragment>)}

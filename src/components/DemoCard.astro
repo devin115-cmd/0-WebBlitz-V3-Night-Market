@@ -1,0 +1,30 @@
+---
+import Frame from './Frame.astro';
+import Icon from './Icon.astro';
+import type { Demo } from '../data/demos';
+import { whatsappHref } from '../data/site';
+import { t, type Locale, type MessageKey } from '../i18n';
+
+interface Props { demo: Demo; locale: Locale; sizes: string; }
+const { demo, locale, sizes } = Astro.props;
+const name = t(locale, `demo.${demo.slug}.name` as MessageKey);
+const description = t(locale, `demo.${demo.slug}.description` as MessageKey);
+const category = t(locale, `category.${demo.category}` as MessageKey);
+const enquiry = whatsappHref(t(locale, 'enquiry.message.design', { demoName: demo.name, demoId: demo.id, demoUrl: demo.url }));
+const search = [name, demo.name, description, category, demo.id].join(' ').toLocaleLowerCase();
+---
+<li class="card" data-card data-category={demo.category} data-search={search}>
+  <a class="card__media" href={demo.url} target="_blank" rel="noopener" aria-label={t(locale, 'catalogue.card.openLabel', { demoName: demo.name })} data-tilt>
+    <Frame demo={demo} locale={locale} sizes={sizes} />
+  </a>
+  <div class="card__body">
+    <p class="card__meta"><span class="tag">{category}</span><span>{demo.id}</span><span>{t(locale, 'catalogue.card.concept')}</span></p>
+    <h3>{name}</h3>
+    <p class="card__desc">{description}</p>
+  </div>
+  <div class="card__actions">
+    <a class="link-arrow" href={demo.url} target="_blank" rel="noopener" aria-label={t(locale, 'catalogue.card.openLabel', { demoName: demo.name })}>{t(locale, 'catalogue.card.demo')}<Icon name="arrow" /></a>
+    <a class="link-arrow wa" href={enquiry} target="_blank" rel="noopener">{t(locale, 'detail.primaryAction', { demoName: demo.name })}<Icon name="whatsapp" /></a>
+  </div>
+  <p class="fine">{t(locale, 'catalogue.card.englishNote')}</p>
+</li>

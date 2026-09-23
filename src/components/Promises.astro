@@ -1,0 +1,23 @@
+---
+import Icon from './Icon.astro';
+import { t, type Locale } from '../i18n';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const cards = [
+  { icon: 'store', color: 'var(--lantern)', title: 'home.promise.business.title', body: 'home.promise.business.body' },
+  { icon: 'mobile', color: 'var(--hibiscus)', title: 'home.promise.mobile.title', body: 'home.promise.mobile.body' },
+  { icon: 'language', color: 'var(--leaf)', title: 'home.promise.language.title', body: 'home.promise.language.body' },
+] as const;
+---
+<section class="promise section" data-theme="night">
+  <div class="wrap promise__grid">
+    {cards.map((card) => (
+      <article class="promise-card" style={`--c:${card.color}`} data-reveal>
+        <Icon name={card.icon} />
+        <h3>{t(locale, card.title)}</h3>
+        <p>{t(locale, card.body)}</p>
+      </article>
+    ))}
+  </div>
+</section>

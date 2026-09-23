@@ -1,0 +1,23 @@
+---
+import Icon from './Icon.astro';
+import Split from './Split.astro';
+import { whatsappHref } from '../data/site';
+import { localePath, t, type Locale } from '../i18n';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+---
+<section class="finale section" data-theme="night" data-finale>
+  <div class="finale__sun" aria-hidden="true" data-sun></div>
+  <div class="finale__rays" aria-hidden="true"></div>
+  <div class="wrap finale__inner">
+    <p class="eyebrow">{t(locale, 'home.final.eyebrow')}</p>
+    <h2 data-split><Split text={t(locale, 'home.final.title')} /></h2>
+    <p data-reveal>{t(locale, 'home.final.description')}</p>
+    <div class="hero__actions" data-reveal>
+      <a class="btn btn--ink" href={whatsappHref(t(locale, 'enquiry.message.general'))} target="_blank" rel="noopener" data-magnetic><Icon name="whatsapp" />{t(locale, 'home.final.primary')}</a>
+      <a class="btn btn--ghost" href={localePath(locale, '/designs/')}>{t(locale, 'home.hero.designs')}<Icon name="right" /></a>
+    </div>
+    <p class="fine" data-reveal>{t(locale, 'enquiry.messageReview')}</p>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+---
+import Icon from './Icon.astro';
+import { whatsappHref } from '../data/site';
+import { locales, localePath, nativeName, shortName, t, type Locale } from '../i18n';
+
+interface Props { locale: Locale; path: string; home: boolean; }
+const { locale, path, home } = Astro.props;
+const homePath = localePath(locale, '/');
+const anchor = (id: string) => (home ? `#${id}` : `${homePath}#${id}`);
+const links = [
+  { href: home ? '#designs' : localePath(locale, '/designs/'), label: t(locale, 'nav.designs'), section: 'designs', current: !home && path === '/designs/' },
+  { href: anchor('process'), label: t(locale, 'nav.process'), section: 'process', current: false },
+  { href: anchor('pricing'), label: t(locale, 'nav.pricing'), section: 'pricing', current: false },
+  { href: anchor('faq'), label: t(locale, 'nav.faq'), section: 'faq', current: false },
+];
+const talk = whatsappHref(t(locale, 'enquiry.message.general'));
+---
+<header class="nav" data-nav>
+  <div class="nav__bar">
+    <a class="brand" href={homePath} aria-label={t(locale, 'nav.home.label')}>
+      <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
+        <defs><linearGradient id="wb-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb627" /><stop offset=".55" stop-color="#ff6a2b" /><stop offset="1" stop-color="#ff3d7f" /></linearGradient></defs>
+        <rect width="40" height="40" rx="13" fill="url(#wb-g)" />
+        <path class="bolt" d="M22.6 6 11 22.4h7.6L16.4 34 29 16.8h-7.8L22.6 6Z" fill="#1d0b04" />
+      </svg>
+      <span>WebBlitz</span>
+    </a>
+    <nav class="nav__links" aria-label={t(locale, 'nav.menu.label')} data-nav-links>
+      <span class="nav__pill" aria-hidden="true" data-nav-pill></span>
+      {links.map((link) => <a href={link.href} data-section-link={link.section} aria-current={link.current ? 'page' : undefined}>{link.label}</a>)}
+    </nav>
+    <div class="lang" role="group" aria-label={t(locale, 'nav.language.label')}>
+      {locales.map((code) => <a href={localePath(code, path)} hreflang={code} lang={code} aria-current={code === locale ? 'true' : undefined} aria-label={nativeName[code]}>{shortName[code]}</a>)}
+    </div>
+    <a class="btn btn--glow btn--sm nav__cta" href={talk} target="_blank" rel="noopener" data-magnetic><Icon name="whatsapp" />{t(locale, 'nav.talk')}</a>
+    <details class="menu" data-menu>
+      <summary aria-label={t(locale, 'nav.menu.open')}><span class="menu__icon" aria-hidden="true"></span></summary>
+      <div class="menu__sheet">
+        <nav aria-label={t(locale, 'nav.menu.label')}>
+          {links.map((link, index) => <a href={link.href} style={`--i:${index}`}>{link.label}</a>)}
+        </nav>
+        <div class="lang" role="group" aria-label={t(locale, 'nav.language.label')}>
+          {locales.map((code) => <a href={localePath(code, path)} hreflang={code} lang={code} aria-current={code === locale ? 'true' : undefined} aria-label={nativeName[code]}>{shortName[code]}</a>)}
+        </div>
+        <a class="btn btn--glow" href={talk} target="_blank" rel="noopener"><Icon name="whatsapp" />{t(locale, 'home.hero.whatsapp')}</a>
+      </div>
+    </details>
+  </div>
+</header>

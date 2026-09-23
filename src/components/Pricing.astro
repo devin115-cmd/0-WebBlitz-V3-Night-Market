@@ -1,0 +1,56 @@
+---
+import Icon from './Icon.astro';
+import Split from './Split.astro';
+import { languageAddOns, legalBaseUrl, whatsappHref } from '../data/site';
+import { factValues } from '../i18n/facts';
+import { localePath, num, t, tParts, type Locale } from '../i18n';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const values = factValues(locale);
+const price = tParts(locale, 'offer.price.value', values);
+---
+<section class="pricing section" data-theme="night" id="pricing" data-section>
+  <div class="wrap">
+    <p class="eyebrow">{t(locale, 'offer.eyebrow')}</p>
+    <h2 class="section-title" data-split><Split text={t(locale, 'offer.title')} /></h2>
+    <p class="section-lede" data-reveal>{t(locale, 'offer.description')}</p>
+    <div class="pricing__grid">
+      <article class="ticket" data-ticket data-reveal>
+        <span class="ticket__halo" aria-hidden="true"></span>
+        <p class="ticket__label">{t(locale, 'offer.price.label')}</p>
+        <p class="ticket__price">
+          {price.map((part) => part.token === 'standardPrice' ? <span class="count">{part.text}</span> : <Fragment>{part.text}</Fragment>)}
+        </p>
+        <p>{t(locale, 'offer.price.qualifier')}</p>
+        <div class="ticket__perf" aria-hidden="true"></div>
+        <div class="ticket__actions">
+          <a class="btn btn--glow" href={whatsappHref(t(locale, 'enquiry.message.general'))} target="_blank" rel="noopener" data-magnetic><Icon name="whatsapp" />{t(locale, 'offer.cta')}</a>
+          <a class="link-arrow" href={`${legalBaseUrl}${localePath(locale, '/terms/')}`}>{t(locale, 'offer.fullScope')}<Icon name="arrow" /></a>
+          <p class="fine">{t(locale, 'offer.approvalNote')}</p>
+        </div>
+      </article>
+      <div class="addons" data-reveal>
+        <h3>{t(locale, 'offer.languages.title')}</h3>
+        <p>{t(locale, 'offer.languages.description')}</p>
+        <table>
+          <thead><tr><th scope="col">{t(locale, 'offer.languages.packageHeader')}</th><th scope="col">{t(locale, 'offer.languages.priceHeader')}</th><th scope="col">{t(locale, 'offer.languages.timeHeader')}</th></tr></thead>
+          <tbody>
+            {languageAddOns.map((addOn) => (
+              <tr>
+                <td>{t(locale, addOn.key)}</td>
+                <td>{t(locale, 'offer.languages.extraPrice', { addOnPrice: num(locale, addOn.standardLkr) })}</td>
+                <td>{t(locale, addOn.extraDays === 1 ? 'offer.languages.extraTime.one' : 'offer.languages.extraTime.other', { extraDays: num(locale, addOn.extraDays) })}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p class="fine gap-top">{t(locale, 'offer.languages.reviewNote')}</p>
+      </div>
+      <div class="renewal" data-reveal>
+        <h3>{t(locale, 'offer.renewal.title')}</h3>
+        <p>{t(locale, 'offer.renewal.body', values)}</p>
+      </div>
+    </div>
+  </div>
+</section>

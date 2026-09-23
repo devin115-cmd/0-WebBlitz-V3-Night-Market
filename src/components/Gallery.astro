@@ -1,0 +1,31 @@
+---
+import DemoCard from './DemoCard.astro';
+import Icon from './Icon.astro';
+import Split from './Split.astro';
+import { demoBySlug, highlightSlugs } from '../data/demos';
+import { factValues } from '../i18n/facts';
+import { localePath, t, type Locale } from '../i18n';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const values = factValues(locale);
+---
+<section class="gallery section" data-theme="night" id="designs" data-section>
+  <div class="wrap gallery__head">
+    <div>
+      <p class="eyebrow">{t(locale, 'home.featured.eyebrow')}</p>
+      <h2 class="section-title" data-split><Split text={t(locale, 'home.featured.title')} /></h2>
+      <p class="section-lede" data-reveal>{t(locale, 'home.featured.description')}</p>
+    </div>
+    <a class="btn btn--ghost" href={localePath(locale, '/designs/')} data-reveal>{t(locale, 'home.featured.all', values)}<Icon name="right" /></a>
+  </div>
+  <div class="rail" data-rail>
+    <ol class="rail__track" data-rail-track>
+      {highlightSlugs.map((slug) => <DemoCard demo={demoBySlug(slug)} locale={locale} sizes="(min-width: 600px) 440px, 82vw" />)}
+      <li class="card card--more">
+        <a href={localePath(locale, '/designs/')}><Icon name="grid" /><span>{t(locale, 'home.featured.all', values)}</span></a>
+      </li>
+    </ol>
+  </div>
+  <p class="wrap fine gallery__note">{t(locale, 'home.featured.disclosure')}</p>
+</section>

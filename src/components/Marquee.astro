@@ -1,0 +1,17 @@
+---
+import { categories } from '../data/demos';
+import { t, type Locale, type MessageKey } from '../i18n';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const names = categories.map((category) => t(locale, `category.${category}` as MessageKey));
+const half = Math.ceil(names.length / 2);
+const rows = [names, [...names.slice(half), ...names.slice(0, half)]];
+---
+<div class="marquee" aria-hidden="true" data-marquee>
+  {rows.map((row, index) => (
+    <div class:list={['marquee__row', { 'marquee__row--alt': index === 1 }]}>
+      {[0, 1].map(() => <div class="marquee__track">{row.map((name) => <span>{name}</span>)}</div>)}
+    </div>
+  ))}
+</div>

@@ -1,0 +1,64 @@
+---
+import Icon from './Icon.astro';
+import Split from './Split.astro';
+import { previewSrc } from '../data/demos';
+import { factValues } from '../i18n/facts';
+import { num, t, type Locale } from '../i18n';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const values = factValues(locale);
+const steps = [
+  { title: 'process.choose.title', body: 'process.choose.body' },
+  { title: 'process.prepare.title', body: 'process.prepare.body' },
+  { title: 'process.review.title', body: 'process.review.body' },
+] as const;
+---
+<section class="process section" data-theme="cream" id="process" data-section>
+  <div class="wrap process__grid">
+    <div class="process__intro">
+      <p class="eyebrow">{t(locale, 'process.eyebrow')}</p>
+      <h2 class="section-title" data-split><Split text={t(locale, 'process.title')} /></h2>
+      <p class="section-lede" data-reveal>{t(locale, 'process.description')}</p>
+    </div>
+    <div class="process__visual" aria-hidden="true">
+      <div class="device" data-device data-stage="2">
+        <div class="device__screen">
+          <div class="layer layer--0 pick">
+            {['rainroom', 'kottu-fm', 'mirror-day'].map((slug, index) => <img src={previewSrc(slug, 320)} alt="" width="320" height="200" loading="lazy" style={`--i:${index}`} />)}
+          </div>
+          <div class="layer layer--1 wire">
+            <span class="w-hero" style="--i:0"></span>
+            <span class="w-title" style="--i:1"></span>
+            <span style="--i:2"></span>
+            <span class="w-short" style="--i:3"></span>
+            <span class="w-row" style="--i:4"><i></i><i></i><i></i></span>
+            <span style="--i:5"></span>
+            <span class="w-btn" style="--i:6"></span>
+          </div>
+          <div class="layer layer--2 live">
+            <img src={previewSrc('kottu-fm', 640)} alt="" width="640" height="400" loading="lazy" style="--i:0" />
+            <span class="ok" style="--i:2"><Icon name="check" /></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="steps" data-steps>
+      <span class="steps__line" aria-hidden="true"><span data-steps-line></span></span>
+      <ol class="steps__list">
+      {steps.map((step, index) => (
+        <li class="step" data-step={index}>
+          <span class="step__num" aria-hidden="true">{num(locale, index + 1)}</span>
+          <div>
+            <h3>{t(locale, step.title)}</h3>
+            <p>{t(locale, step.body)}</p>
+          </div>
+        </li>
+      ))}
+      </ol>
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="callout" data-reveal><Icon name="clock" /><span>{t(locale, 'process.timing', values)}</span></p>
+  </div>
+</section>
