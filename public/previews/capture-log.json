@@ -1,0 +1,248 @@
+{
+  "capturedAt": "2026-09-23T12:52:06.729Z",
+  "viewport": "1280x800",
+  "browser": "Chromium (Playwright 1.61.1)",
+  "reducedMotion": true,
+  "demos": [
+    {
+      "slug": "mirror-day",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/mirror-day/",
+      "status": 200,
+      "title": "Mirror Day - fictional salon concept"
+    },
+    {
+      "slug": "kottu-fm",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/kottu-fm/",
+      "status": 200,
+      "title": "Kottu FM - fictional kottu counter concept"
+    },
+    {
+      "slug": "spark-bench",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/spark-bench/",
+      "status": 200,
+      "title": "Spark Bench - fictional tuition concept"
+    },
+    {
+      "slug": "stillstory",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/stillstory/",
+      "status": 200,
+      "title": "Stillstory - fictional photography studio concept"
+    },
+    {
+      "slug": "room-and-rule",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/room-and-rule/",
+      "status": 200,
+      "title": "Room & Rule - tile takeoff workbench (fictional concept)"
+    },
+    {
+      "slug": "threadline",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/threadline/",
+      "status": 200,
+      "title": "Threadline - fictional handloom and tailoring concept"
+    },
+    {
+      "slug": "petal-parcel",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/petal-parcel/",
+      "status": 200,
+      "title": "Petal Parcel - a little feeling, beautifully arranged (fictional concept)"
+    },
+    {
+      "slug": "rainroom",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/rainroom/",
+      "status": 200,
+      "title": "Rainroom - make room for a slower day (fictional concept)"
+    },
+    {
+      "slug": "leaf-atlas",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/leaf-atlas/",
+      "status": 200,
+      "title": "Leaf Atlas (LKWB-009) - fictional tea maker concept"
+    },
+    {
+      "slug": "ink-and-fold",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/ink-and-fold/",
+      "status": 200,
+      "title": "Ink & Fold - print and packaging studio (fictional concept)"
+    },
+    {
+      "slug": "bay-signal",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/bay-signal/",
+      "status": 200,
+      "title": "Bay Signal - fictional garage concept"
+    },
+    {
+      "slug": "sunshift",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/sunshift/",
+      "status": 200,
+      "title": "Sunshift - fictional solar installation concept"
+    },
+    {
+      "slug": "second-spin",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/second-spin/",
+      "status": 200,
+      "title": "Second Spin - fictional refurbished device concept"
+    },
+    {
+      "slug": "patch-bay",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/patch-bay/",
+      "status": 200,
+      "title": "Patch Bay - fictional event sound and AV rental concept"
+    },
+    {
+      "slug": "rally-grid",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/rally-grid/",
+      "status": 200,
+      "title": "Rally Grid - fictional badminton venue concept"
+    },
+    {
+      "slug": "cue-house",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/cue-house/",
+      "status": 200,
+      "title": "Cue House - fictional event coordination concept"
+    },
+    {
+      "slug": "wallfolk",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/wallfolk/",
+      "status": 200,
+      "title": "Wallfolk - mural concept demo (fictional)"
+    },
+    {
+      "slug": "pulse-post",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/pulse-post/",
+      "status": 200,
+      "title": "Pulse Post - fictional recording studio concept"
+    },
+    {
+      "slug": "load-logic",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/load-logic/",
+      "status": 200,
+      "title": "Load Logic - a fictional moving-day floor-layout sketch"
+    },
+    {
+      "slug": "facet-note",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/facet-note/",
+      "status": 200,
+      "title": "Facet Note - fictional jewellery studies concept"
+    },
+    {
+      "slug": "tenon-house",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/tenon-house/",
+      "status": 200,
+      "title": "Tenon House - fictional furniture concept"
+    },
+    {
+      "slug": "clay-loop",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/clay-loop/",
+      "status": 200,
+      "title": "Clay Loop - shape a vessel on a virtual wheel (fictional concept)"
+    },
+    {
+      "slug": "margin-walk",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/margin-walk/",
+      "status": 200,
+      "title": "Margin Walk - fictional bookshop and microfiction press"
+    },
+    {
+      "slug": "orbit-objects",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/orbit-objects/",
+      "status": 200,
+      "title": "Pebble tray · Orbit Objects - fictional homeware concept"
+    },
+    {
+      "slug": "table-parliament",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/table-parliament/",
+      "status": 200,
+      "title": "Table Parliament - fictional catering concept"
+    },
+    {
+      "slug": "cutback-studio",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/cutback-studio/",
+      "status": 200,
+      "title": "Cutback Studio - The same moment. A different cut. (fictional concept LKWB-026)"
+    },
+    {
+      "slug": "cycle-crate",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/cycle-crate/",
+      "status": 200,
+      "title": "Cycle Crate - fictional reusable-packaging pool concept"
+    },
+    {
+      "slug": "latch-lab",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/latch-lab/",
+      "status": 200,
+      "title": "Latch Lab - a little mystery. No long instructions. (Fictional concept)"
+    },
+    {
+      "slug": "spice-assembly",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/spice-assembly/",
+      "status": 200,
+      "title": "Spice Assembly - fictional spice-blending house concept"
+    },
+    {
+      "slug": "swap-courtyard",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/swap-courtyard/",
+      "status": 200,
+      "title": "Swap Courtyard - a fictional swap-cycle demonstration (LKWB-030)"
+    },
+    {
+      "slug": "afterlight-works",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/afterlight-works/",
+      "status": 200,
+      "title": "Afterlight Works - fictional decorative lighting concept"
+    },
+    {
+      "slug": "sightline-signs",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/sightline-signs/",
+      "status": 200,
+      "title": "Sightline Signs - anamorphic shopfront identity study (fictional)"
+    },
+    {
+      "slug": "crumb-cut",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/crumb-cut/",
+      "status": 200,
+      "title": "Crumb Cut - a fictional dessert slice study"
+    },
+    {
+      "slug": "ripple-yard",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/ripple-yard/",
+      "status": 200,
+      "title": "Ripple Yard - a fictional courtyard water study"
+    },
+    {
+      "slug": "desk-mosaic",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/desk-mosaic/",
+      "status": 200,
+      "title": "Desk Mosaic - a fictional coworking room concept (LKWB-035)"
+    },
+    {
+      "slug": "lane-relay",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/lane-relay/",
+      "status": 200,
+      "title": "Lane Relay - a clear path through a busy day (fictional courier concept)"
+    },
+    {
+      "slug": "phrase-harbour",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/phrase-harbour/",
+      "status": 200,
+      "title": "Phrase Harbour - fictional translation studio concept"
+    },
+    {
+      "slug": "counterform",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/counterform/",
+      "status": 200,
+      "title": "Counterform - fictional panel-art concept"
+    },
+    {
+      "slug": "matchday-bureau",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/matchday-bureau/",
+      "status": 200,
+      "title": "Matchday Bureau - fictional tournament organiser concept"
+    },
+    {
+      "slug": "bead-borough",
+      "url": "https://web-blitz.rajantha-rc.workers.dev/bead-borough/",
+      "status": 200,
+      "title": "Bead Borough - a picture, one small piece at a time (fictional concept)"
+    }
+  ]
+}
