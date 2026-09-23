@@ -13,7 +13,7 @@ interface Props { locale: Locale; path: string; title: string; description: stri
 const { locale, path, title, description, home = false, noindex = false } = Astro.props;
 const site = Astro.site ?? new URL('https://serendib.tech');
 const canonical = new URL(localePath(locale, path), site).href;
-const og = new URL(`/og-${locale}.jpg`, site).href;
+const og = new URL('/og.jpg', site).href;
 const runtime = JSON.stringify(runtimeMessages(locale)).replace(/</g, '\\u003c');
 ---
 <!doctype html>
@@ -35,8 +35,13 @@ const runtime = JSON.stringify(runtimeMessages(locale)).replace(/</g, '\\u003c')
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={og} />
     <meta property="og:image:alt" content={t(locale, 'meta.social.alt')} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:locale" content={localeTag[locale].replace('-', '_')} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={og} />
+    <meta name="twitter:image:alt" content={t(locale, 'meta.social.alt')} />
     <script is:inline>document.documentElement.classList.add('js');setTimeout(function(){document.documentElement.classList.add('motion-failsafe')},3000);</script>
   </head>
   <body data-theme="night">
