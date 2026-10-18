@@ -87,7 +87,7 @@
   "offer.included.metadata": "පිටු මාතෘකාව, විස්තරය සහ සමාජ මාධ්‍යවල බෙදාගන්නා විට පෙන්වන රූපයක්",
   "offer.included.hosting": "WebBlitz යටතේ ඔබට ලැබෙන අනුමත උප ඩොමේනයක මාස {hostingMonths}ක හොස්ටින්",
   "offer.included.corrections": "පළමු භාරදීමෙන් පැය {correctionHours}ක් ඇතුළත, නිවැරදි කිරීම් සියල්ල එක ලැයිස්තුවක් ලෙස එවීමට අවස්ථා {correctionRounds}ක්",
-  "offer.excluded.title": "වෙනම එකඟ විය යුතු දේ",
+  "offer.excluded.title": "ඇතුළත් නොවන දේ",
   "offer.excluded.intro": "පහත වැඩ හෝ වියදම් මූලික පැකේජයට ඇතුළත් නැහැ.",
   "offer.excluded.domain": "ඔබටම වෙන් වූ ඩොමේනයක් ලියාපදිංචි කිරීම සහ ගාස්තු",
   "offer.excluded.assets": "ලාංඡන නිර්මාණය සහ ඡායාරූපකරණය",
