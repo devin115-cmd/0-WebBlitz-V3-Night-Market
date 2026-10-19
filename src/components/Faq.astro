@@ -22,6 +22,7 @@ const items = ['included', 'languages', 'domain', 'content', 'delivery', 'correc
         <details class="qa" name="faq" open={index === 0} data-reveal>
           <summary>{t(locale, `faq.${item}.question` as MessageKey)}<span class="qa__icon" aria-hidden="true"></span></summary>
           <p class="qa__a">{t(locale, `faq.${item}.answer` as MessageKey, values)}</p>
+          {item === 'content' && <p class="qa__a"><a class="link-arrow" href="#checklist">{t(locale, 'footer.checklist')}<Icon name="arrow" /></a></p>}
         </details>
       ))}
     </div>
