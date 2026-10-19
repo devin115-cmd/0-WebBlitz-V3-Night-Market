@@ -1,9 +1,9 @@
 ---
 import Icon from './Icon.astro';
 import Split from './Split.astro';
-import { languageAddOns, legalBaseUrl, whatsappHref } from '../data/site';
+import { languageAddOns, legalHref, whatsappHref } from '../data/site';
 import { factValues } from '../i18n/facts';
-import { localePath, num, t, tParts, type Locale } from '../i18n';
+import { num, t, tParts, type Locale } from '../i18n';
 
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
@@ -26,7 +26,7 @@ const price = tParts(locale, 'offer.price.value', values);
         <div class="ticket__perf" aria-hidden="true"></div>
         <div class="ticket__actions">
           <a class="btn btn--glow" href={whatsappHref(t(locale, 'enquiry.message.general'))} target="_blank" rel="noopener" data-magnetic><Icon name="whatsapp" />{t(locale, 'offer.cta')}</a>
-          <a class="link-arrow" href={`${legalBaseUrl}${localePath(locale, '/terms/')}`}>{t(locale, 'offer.fullScope')}<Icon name="arrow" /></a>
+          <a class="link-arrow" href={legalHref('terms')}>{t(locale, 'offer.fullScope')}<Icon name="arrow" /></a>
           <p class="fine">{t(locale, 'offer.approvalNote')}</p>
         </div>
       </article>

@@ -32,6 +32,10 @@ for (const home of homes) {
     expect(whatsapp.length).toBeGreaterThan(5);
     for (const href of whatsapp) expect(href.startsWith('https://wa.me/94777192825?text=')).toBe(true);
     await expect(page.locator('body')).not.toContainText(/9,990|S3rendib/);
+    await expect(page.locator('#checklist [data-tile]')).toHaveCount(6);
+    await expect(page.locator('#faq a[href="#checklist"]')).toHaveCount(1);
+    const legal = await page.locator('a[href*="/terms/"], a[href*="/privacy/"]').evaluateAll((links) => [...new Set(links.map((link) => (link as HTMLAnchorElement).href))].sort());
+    expect(legal).toEqual(['https://serendib.tech/privacy/', 'https://serendib.tech/terms/']);
     expect(errors).toEqual([]);
   });
 }

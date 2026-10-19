@@ -31,8 +31,12 @@ export const contact = {
   email: 'info@serendib.tech',
 } as const;
 
-/** Full terms and privacy notices are served by the existing WebBlitz application. */
-export const legalBaseUrl = (process.env.LEGAL_BASE_URL || 'https://serendib.tech').replace(/\/$/, '');
+/** Full terms and privacy notices are served by the existing WebBlitz application, which has one unprefixed URL per notice for every locale. */
+const legalBaseUrl = (process.env.LEGAL_BASE_URL || 'https://serendib.tech').replace(/\/$/, '');
+
+export function legalHref(page: 'terms' | 'privacy'): string {
+  return `${legalBaseUrl}/${page}/`;
+}
 
 export function whatsappHref(message: string): string {
   return `https://wa.me/${contact.whatsappDigits}?text=${encodeURIComponent(message)}`;

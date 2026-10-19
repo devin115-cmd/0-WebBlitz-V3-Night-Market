@@ -68,16 +68,18 @@ Configuration (build time, optional):
 
 ## Content and provenance
 
-- **Copy:** the 327-key WebBlitz V2 marketing catalogue (`src/i18n/*.json`), copied unchanged from `0-WebBlitz-V2` at commit `4f15e14` (`src/i18n/webblitz/`). This design needs no new strings. The Sinhala and Tamil texts are agent-drafted and **still need native-speaker review** before publication.
-- **Offer facts:** `src/data/site.ts` mirrors the standard offer (contract `web-blitz-v2-2026-07-30`): LKR 22,000 base, one page in one language, 3 working days from Build Ready, 12 months hosting, optional LKR 2,500 renewal, one correction round within 48 hours, and the five language add-on packages. The expired campaign price is not used.
+- **Copy:** 268 keys (`src/i18n/*.json`), derived from the WebBlitz V2 marketing catalogue in `0-WebBlitz-V2` at commit `4f15e14` (`src/i18n/webblitz/`). Keys this site doesn't render have been removed, and the English, Sinhala and Tamil copy has since been rewritten to read naturally (#1, #2). The Sinhala and Tamil texts are agent-drafted and **still need native-speaker review** before publication.
+- **Offer facts:** `src/data/site.ts` mirrors the standard offer (contract `web-blitz-v2-2026-07-30`): LKR 22,000 base, one page in one language, 3 working days from the day everything is ready, 12 months hosting, optional LKR 2,500 renewal, one correction round within 48 hours, and the five language add-on packages. The expired campaign price is not used.
 - **Demos:** 40 supplied concepts with exact IDs and URLs (`src/data/demos.ts`). They are fictional, open in English, and are labelled that way.
 - **Previews:** recaptured from the live demos on 23 September 2026 with `scripts/capture-previews.mjs` (log in `public/previews/capture-log.json`). Many still show the demos' former attribution; the demo owner is rebranding them. Six demos currently show a blank first screen or an error page (Ink & Fold, Bay Signal, Clay Loop, Table Parliament, Cutback Studio, Swap Courtyard). They get a designed cover with a "preview unavailable" note until their owner fixes them.
-- **Legal:** Terms and Privacy link to the existing WebBlitz application; this repository does not reproduce them.
+- **Legal:** Terms and Privacy link to the existing WebBlitz application at `LEGAL_BASE_URL/terms/` and `/privacy/` from every locale, because the application serves no locale-prefixed notices. This repository does not reproduce them.
 
 ## Checks
 
-- `npm run check:i18n`: identical keys, placeholder parity, 40 names and descriptions, target script in Sinhala and Tamil.
+- `npm run check:i18n`: identical keys, placeholder parity, 40 names and descriptions, target script in Sinhala and Tamil, and no keys left unused by `src/`.
 - `npm run check:budget`: gzip limits of 60KB largest JS, 16KB largest CSS, 24KB largest HTML.
-- `npm run test:e2e`: Chromium and WebKit. Covers every locale, 320–1440px overflow, facts and WhatsApp links, alternates, hero entrance, theme morph and current-section navigation, pause/resume, reduced motion, the catalogue filters and exact demo links, language switching, the mobile menu and no-JavaScript output.
+- `npm run test:e2e`: Chromium and WebKit. Covers every locale, 320–1440px overflow, facts, WhatsApp and legal links, alternates, hero entrance, theme morph and current-section navigation, pause/resume, reduced motion, the catalogue filters and exact demo links, language switching, the mobile menu and no-JavaScript output.
+
+CI (`.github/workflows/verify.yml`) runs `npm run verify` on every pull request and push to `main`.
 
 Not yet done: physical Android/iPhone checks, native-language review, a screen-reader pass and field performance measurement.

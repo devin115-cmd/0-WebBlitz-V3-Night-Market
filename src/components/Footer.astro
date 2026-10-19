@@ -1,10 +1,9 @@
 ---
-import { contact, legalBaseUrl } from '../data/site';
+import { contact, legalHref } from '../data/site';
 import { localePath, t, type Locale } from '../i18n';
 
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
-const legal = (page: string) => `${legalBaseUrl}${localePath(locale, `/${page}/`)}`;
 const year = new Date().getFullYear();
 ---
 <footer class="footer" data-footer>
@@ -19,8 +18,9 @@ const year = new Date().getFullYear();
         <ul>
           <li><a href={localePath(locale, '/designs/')}>{t(locale, 'footer.designs')}</a></li>
           <li><a href={`${localePath(locale, '/')}#pricing`}>{t(locale, 'footer.scope')}</a></li>
-          <li><a href={legal('terms')}>{t(locale, 'footer.terms')}</a></li>
-          <li><a href={legal('privacy')}>{t(locale, 'footer.privacy')}</a></li>
+          <li><a href={`${localePath(locale, '/')}#checklist`}>{t(locale, 'footer.checklist')}</a></li>
+          <li><a href={legalHref('terms')}>{t(locale, 'footer.terms')}</a></li>
+          <li><a href={legalHref('privacy')}>{t(locale, 'footer.privacy')}</a></li>
         </ul>
       </div>
       <div>

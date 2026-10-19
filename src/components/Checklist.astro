@@ -1,0 +1,39 @@
+---
+import Icon from './Icon.astro';
+import Split from './Split.astro';
+import { whatsappHref } from '../data/site';
+import { t, type Locale } from '../i18n';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const items = [
+  { icon: 'store', title: 'checklist.business.title', body: 'checklist.business.body' },
+  { icon: 'grid', title: 'checklist.services.title', body: 'checklist.services.body' },
+  { icon: 'image', title: 'checklist.images.title', body: 'checklist.images.body' },
+  { icon: 'pin', title: 'checklist.contact.title', body: 'checklist.contact.body' },
+  { icon: 'language', title: 'checklist.language.title', body: 'checklist.language.body' },
+  { icon: 'palette', title: 'checklist.design.title', body: 'checklist.design.body' },
+] as const;
+---
+<section class="checklist section" data-theme="cream" id="checklist">
+  <div class="wrap">
+    <p class="eyebrow">{t(locale, 'checklist.eyebrow')}</p>
+    <h2 class="section-title" data-split><Split text={t(locale, 'checklist.title')} /></h2>
+    <p class="section-lede" data-reveal>{t(locale, 'checklist.description')}</p>
+    <ul class="bento">
+      {items.map((item) => (
+        <li class="tile tile--wide" data-tile>
+          <Icon name={item.icon} />
+          <div>
+            <h3>{t(locale, item.title)}</h3>
+            <p>{t(locale, item.body)}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+    <div class="hero__actions" data-reveal>
+      <a class="btn btn--ink" href={whatsappHref(t(locale, 'enquiry.message.general'))} target="_blank" rel="noopener" data-magnetic><Icon name="whatsapp" />{t(locale, 'checklist.cta')}</a>
+    </div>
+    <p class="fine" data-reveal>{t(locale, 'checklist.note')}</p>
+  </div>
+</section>
