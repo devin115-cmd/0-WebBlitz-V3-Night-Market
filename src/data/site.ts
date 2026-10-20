@@ -25,9 +25,9 @@ export const languageAddOns = [
 ] as const;
 
 export const contact = {
-  whatsappDigits: '94777192825',
-  phoneE164: '+94777192825',
-  phoneDisplay: '+94 777 192 825',
+  whatsappDigits: '94701809195',
+  phoneE164: '+94701809195',
+  phoneDisplay: '+94 701 809 195',
   email: 'info@serendib.tech',
 } as const;
 
