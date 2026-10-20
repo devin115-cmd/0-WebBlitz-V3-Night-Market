@@ -30,7 +30,7 @@ for (const home of homes) {
     await expect(page.locator('.ticket__price')).toContainText('22,000', { timeout: 15_000 });
     const whatsapp = await page.locator('a[href*="wa.me"]').evaluateAll((links) => links.map((link) => (link as HTMLAnchorElement).href));
     expect(whatsapp.length).toBeGreaterThan(5);
-    for (const href of whatsapp) expect(href.startsWith('https://wa.me/94777192825?text=')).toBe(true);
+    for (const href of whatsapp) expect(href.startsWith('https://wa.me/94701809195?text=')).toBe(true);
     await expect(page.locator('body')).not.toContainText(/9,990|S3rendib/);
     await expect(page.locator('#checklist [data-tile]')).toHaveCount(6);
     await expect(page.locator('#faq a[href="#checklist"]')).toHaveCount(1);
@@ -149,7 +149,7 @@ test.describe('without JavaScript', () => {
     await expect(page.locator('h1')).toBeVisible();
     await expect(page.locator('.ticket__price')).toContainText('22,000');
     await expect(page.locator('[data-motion-toggle]')).toBeHidden();
-    await expect(page.locator('a[href^="https://wa.me/94777192825"]').first()).toBeVisible();
+    await expect(page.locator('a[href^="https://wa.me/94701809195"]').first()).toBeVisible();
     await page.goto('/designs/');
     await expect(page.locator('[data-grid] [data-card]')).toHaveCount(40);
     await expect(page.locator('[data-filters]')).toBeHidden();
